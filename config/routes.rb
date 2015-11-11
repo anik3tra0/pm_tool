@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'dashboard/index'
 
   resources :vendors
+  resources :categories
   devise_for :users
   get 'tasks/mark_as_complete'
   get 'tasks/mark_as_incomplete'
