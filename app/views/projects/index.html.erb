@@ -1,0 +1,53 @@
+<h3>Listing projects</h3>
+
+<% data = {} %>
+
+<% Client.all.each do |client| %>
+	<% data["#{client.name}"] = client.projects.size %>
+<% end %>
+
+<% projects = {} %>
+
+<% Project.all.each do |project| %>
+	<% projects["#{project.name}"] = project.tasks.size %>
+<% end %>
+
+<%= column_chart(projects) %>
+
+<%= pie_chart (data) %>
+<%= link_to "Export as Excel", projects_path(format: "xls") %>
+<%= link_to "Export as PDF", projects_path(format: "pdf") %>
+<%= link_to "All Projects", projects_path %>
+<%= link_to "Add Projects", new_project_path %>
+
+<table>
+	<thead>
+		<tr>
+			<th> # </th>
+			<th> Name </th>
+			<th> status </th>
+			<th> start Date </th>
+			<th> Cient </th>
+			<th> Tasks </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each_with_index do | project,index | %>
+		<tr>
+		 	<td><%= index + 1 %></td>
+		 	<td><%= link_to project.name, project_path(project) %></td>
+		 	<td><%= project.status %></td>
+		 	<td><%= project.start_date.strftime("%A, %d %B %Y") %></td>
+		 	<td><%= project.client.try(:name) %></td>
+		 	<td><%= project.code %></td>
+		 	<td><%= project.tasks.count %></td>
+		 	<td><%= link_to "set as a current_project", projects_set_current_project_path(project_id: project.id) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table><br>
+<br>
+
+<%= link_to "New Project", new_project_path %> |
+
+<strong>Current Project - <%= current_project.name %></strong>

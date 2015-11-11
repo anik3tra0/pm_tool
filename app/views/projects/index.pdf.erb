@@ -1,0 +1,25 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th> # </th>
+			<th> Name </th>
+			<th> status </th>
+			<th> start Date </th>
+			<th> Cient </th>
+			<th> Tasks </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each_with_index do | project,index | %>
+		<tr>
+		 	<td><%= index + 1 %></td>
+		 	<td><%= link_to project.name, project_url(project) %></td>
+		 	<td><%= project.status %></td>
+		 	<td><%= project.start_date.strftime("%A, %d %B %Y") %></td>
+		 	<td><%= project.client.try(:name) %></td>
+		 	<td><%= project.code %></td>
+		 	<td><%= project.tasks.count %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

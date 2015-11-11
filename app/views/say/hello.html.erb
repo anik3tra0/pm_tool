@@ -1,0 +1,119 @@
+<h3>Total clients - <%= @clients_count %></h3><br>
+<br>
+<h3>Total projects - <%= @projects_count %></h3><br>
+<br>
+<h3>Total tasks - <%= @tasks_count %></h3><br>
+
+
+<h3>Listing clients</h3>
+<table border = "1">
+  <thead>
+    <tr>
+      <th> Sl no </th>
+      <th> Name </th>
+      <th> Company </th>
+      <th> Email </th>
+      <th> Website </th>
+      <th> Number of projects </th>
+    </tr>
+   </thead>
+   <tbody>
+      <% @clients.each_with_index do |client,index| %>
+      <tr>
+      <td><%= index + 1 %>
+      <td><%= client.name %></td>
+      <td><%= client.company_name %></td>
+      <td><%= client.email_id %></td>
+      <td><%= client.website %></td>
+      <td><%= client.projects.size %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table><br>
+<br>
+
+<h3>Listing projects</h3>
+<table border = "1">
+  <thead>
+    <tr>
+      <th> Sl no </th>
+      <th> Name </th>
+      <th> Description </th>
+      <th> Status </th>
+      <th> Start date </th>
+      <th> Client id </th>
+    </tr>
+   </thead>
+   <tbody>
+      <% @projects.each_with_index do |project,index| %>
+      <tr>
+      <td><%= index + 1 %>
+      <td><%= project.name %></td>
+      <td><%= project.description %></td>
+      <td><%= project.status %></td>
+      <td><%= project.start_date %></td>
+      <td><%= project.client_id %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table><br>
+<br>
+
+
+
+<h3>Listing Tasks</h3>
+<table border = "1">
+  <thead>
+    <tr>
+      <th> Sl no </th>
+      <th> Name </th>
+      <th> Due date </th>
+      <th> Project id</th>
+      <th> IS completed </th>
+      <th> Client id </th>
+
+    </tr>
+   </thead>
+   <tbody>
+      <% @tasks.each_with_index do |task,index| %>
+      <tr>
+      <td><%= index + 1 %>
+      <td><%= task.name %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.project_id %></td>
+      <td><%= task.is_completed %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table><br>
+<br>
+
+<h3>Listing projects</h3>
+<table border = "1">
+  <thead>
+    <tr>
+      <th> Sl no </th>
+      <th> Name </th>
+      <th> Description </th>
+      <th> Status </th>
+      <th> Start date </th>
+      <th> Client id </th>
+    </tr>
+   </thead>
+   <tbody>
+      <% @projects.each_with_index do |project,index| %>
+      <tr>
+      <td><%= index + 1 %>
+      <td><%= project.name %></td>
+      <td><%= project.description %></td>
+      <td><%= project.status %></td>
+      <td><%= project.start_date %></td>
+      <td><%= project.client_id %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table><br>
+<br>
+
+
+

@@ -1,0 +1,29 @@
+<% @project = Project.find(params[:project_id]) %>
+
+<h3>Add task to <%= @project.name %></h3>
+
+<% @task = Task.new %>
+
+<%= form_for([@project,@task]) do |f| %>
+
+<% if @task.errors.any? %>
+
+<ul>
+<% for msg in @task.errors.full.messages %>
+	<li><%= msg %></li>
+	<% end %>
+</ul>
+
+	<label>Name: </label><br/>
+	<%= f.text_field :name %><br/>
+
+	<label>Due Date: </label><br/>
+	<%= f.date_select :due_date %><br/>
+
+	<label>Is completed? </label><br/>
+	<%= f.check_box :is_completed %><br/>
+
+	<%= f.hidden_field :project_id, value: @project.id %>
+	
+	<%= f.submit%>
+<% end %>

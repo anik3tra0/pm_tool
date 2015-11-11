@@ -1,0 +1,13 @@
+<% if @clients.empty? %>
+<p>NO clients found</p>
+<% else %>
+<ul>
+<% for client in @clients %>
+	<li><%= link_to client.name, client_path(client) %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<% if can? :create, Client.new %>
+	<%= link_to "New client", new_client_path %>
+<% end %>

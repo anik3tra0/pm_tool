@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PmTool</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+	<% if user_signed_in? %>
+Welcome <%= current_user.email %>, <%= link_to "profile" %> | <%= link_to "Account Settings", edit_user_registration_path %> | <%= link_to "log out", destroy_user_session_path, method: :delete %>
+<%else%>
+<%= link_to "sign_in", new_user_session_path %>
+<%= link_to "log out", new_user_registration_path %>
+<% end %>
+
+<%= yield %>
+
+
+</body>
+</html>
